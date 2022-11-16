@@ -1,24 +1,24 @@
 import React from 'react';
-import ToDoList from './TodoList.js';
+import {ToDoList, todoList} from './TodoList.js';
 import AddToDoForm from './AddToDoForm.js';
 
 
 function App() {
 
-  const todoList = [
-    {
-      id: 1,
-      title: "wash face"
-    },
-    {
-      id: 2,
-      title: "make coffee"
-    },
-    {
-      id: 3,
-      title: "physical therapy"
-    }
-  ];
+  // const todoList = [
+  //   {
+  //     id: 1,
+  //     title: "wash face"
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "make coffee"
+  //   },
+  //   {
+  //     id: 3,
+  //     title: "physical therapy"
+  //   }
+  // ];
 
   return (
     <div>

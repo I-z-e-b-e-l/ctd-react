@@ -1,9 +1,12 @@
 import React from "react";
 
-function TodoListItem() {
+function TodoListItem(props) {
+
+  const item=props.arrayitem;
+
     return(
         <div>
-          <li>
+          <li key={item.objectID}>
             {item.title}
           </li> 
         </div>

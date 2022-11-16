@@ -1,28 +1,29 @@
 import React from "react";
 import TodoListItem from "./TodoListItem";
 
-function ToDoList(props) {
 
-  // const todoList = [
-  //     {
-  //       id: 1,
-  //       title: "wash face"
-  //     },
-  //     {
-  //       id: 2,
-  //       title: "make coffee"
-  //     },
-  //     {
-  //       id: 3,
-  //       title: "physical therapy"
-  //     }
-  //   ];
+  const todoList = [
+      {
+        id: 1,
+        title: "wash face"
+      },
+      {
+        id: 2,
+        title: "make coffee"
+      },
+      {
+        id: 3,
+        title: "physical therapy"
+      }
+    ];
+
+function ToDoList(props) {
 
     return (
         <ul>
           {props.todoList.map(function (item) {
             return (
-              <TodoListItem item={item}/>
+              <TodoListItem arrayitem={item}/>
  
             );
           })}
@@ -33,4 +34,4 @@ function ToDoList(props) {
 
 
 
-export default ToDoList;
+export {ToDoList, todoList};
