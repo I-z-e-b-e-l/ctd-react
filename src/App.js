@@ -1,49 +1,29 @@
 import React from 'react';
-import {ToDoList, todoList} from './TodoList.js';
+import ToDoList from './TodoList.js';
 import AddToDoForm from './AddToDoForm.js';
 
 
 function App() {
 
-  // const todoList = [
-  //   {
-  //     id: 1,
-  //     title: "wash face"
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "make coffee"
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "physical therapy"
-  //   }
-  // ];
-
+  const [newTodo, setNewTodo] = React.useState("");
+  
   return (
     <div>
       <h1>To Do List</h1>
-      <AddToDoForm />
-      <ToDoList todoList={todoList}/>
-      <Search />
+      <AddToDoForm onAddTodo={setNewTodo} />
+      <p>You're adding:{newTodo}</p>
+      <ToDoList />
+      
     </div>
   );
 };
-
-const Search = () => {
-  const handleChange = (event) => {
-    console.log(event.target.value)
-  }
-
-  return (
-
-    <div>
-      <label htmlFor='search'>Search:</label>
-      <input id="search" type='text' onChange={handleChange} />
-    </div>
-  );
-};
-
 
 export default App;
+
+
+
+
+
+
+
 

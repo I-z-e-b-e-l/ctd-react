@@ -1,19 +1,20 @@
 import React from "react";
 
-function AddToDoForm(){
+function AddToDoForm(props){
 
     const handleAddTodo = (event) => {
         event.preventDefault();
-        console.log(event)
-        console.log(event.input.value)
-        let todoTitle = event.target.value;
-        console.log(todoTitle)
+        const todoTitle = event.target.title.value;
+        console.log(todoTitle);
 
-        // reset the form so the text input value is cleared
+        props.onAddTodo(todoTitle);
+
+        event.target.reset();
+
     }
 
     return(
-        <form onSubmit={handleAddTodo}>
+        <form onSubmit={handleAddTodo} onAddTodo>
             <label htmlFor='todoTitle'>title</label>
             <input id='todoTitle' type="text" name="title" />
             <button type='submit'>Add</button>
@@ -22,16 +23,3 @@ function AddToDoForm(){
 }
 
 export default AddToDoForm
-
-// ☑ Add a name attribute to the text input with value title
-//  ☑ Inside the AddTodoForm functional component, above the return statement, create a new function called handleAddTodo that takes event as a parameter
-//  ☑  First, inside this function, prevent the default behavior of the form submit
-// hint: preventDefault method
-// ➡️ Next, retrieve the value of the title element from the event target and store it in a variable named todoTitle
-// ☑ Log the value of todoTitle in the console
-// ➡️ Finally, reset the form so the text input value is cleared
-// Add onSubmit prop to form element and pass the handleAddTodo function by reference
-// View your application in browser
-// Enter a value in the text input and submit the form
-// Verify that the value you entered is visible in the console
-// Verify that form is cleared properly

@@ -24,12 +24,15 @@ export default TodoListItem;
 // Add a multi-line return statement to your TodoListItem function (this is where we will insert JSX)
 // hint: use parenthesis for multi-line return
 // Move list item JSX from TodoList.js to TodoListItem.js (see below)
+
 // Open /src/TodoList.js
 // Cut (copy and remove) the list item element (<li>)
+
 // Open /src/TodoListItem.js
 // Inside the multi-line return, paste the list item element (<li>)
 // Remove the key attribute
 // Refactor TodoList.js to use new TodoListItem component (see below)
+
 // Open /src/TodoList.js
 // Below React, import TodoListItem
 // Inside the map() method, use the TodoListItem component

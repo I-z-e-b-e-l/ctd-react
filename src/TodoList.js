@@ -17,13 +17,13 @@ import TodoListItem from "./TodoListItem";
       }
     ];
 
-function ToDoList(props) {
+function ToDoList() {
 
     return (
         <ul>
-          {props.todoList.map(function (item) {
+          {todoList.map(function (item) {
             return (
-              <TodoListItem arrayitem={item}/>
+              <TodoListItem key={item.id} arrayitem={item}/>
  
             );
           })}
@@ -34,4 +34,4 @@ function ToDoList(props) {
 
 
 
-export {ToDoList, todoList};
+export default ToDoList;
