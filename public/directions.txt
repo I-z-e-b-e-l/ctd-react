@@ -1,26 +1,56 @@
+
+☑ ❓
+
+Save your list in local browser storage so it persists between page loads:
+
  Open /src/App.js
-☑ Remove the newTodo state variable and the corresponding JSX that displays it
 
- ☑ Declare a new function named addTodo that takes newTodo as a parameter
+ ☑ Define a useEffect React hook with todoList as a dependency
  
-    ☑ Call the setTodoList state setter 
+☑  Inside the side-effect handler function, save the todoList inside localStorage with the key "savedTodoList"
 
-    Use the spread operator (...) to pass the existing Objects in the todoList Array along with the newTodo Object
-    ❓What array? todoListstate? 
+    ☑ Hint: localStorage.setItem method
 
-    Change the value of the onAddTodo prop for AddTodoForm to addTodo
+ Run your application and view in browser
 
- Open /src/AddTodoForm.js
+ Enter a new todo in "Add Todo" form and submit:
+    Open your Local Storage panel in the DevTools
 
- Inside handleAddTodo:
- Update the onAddTodo callback prop to pass an Object instead of a String; Object should have the following properties:
-    ☑title: equal to todoTitle
-    ☑id: unique identifier (hint: use Date.now() to generate a unique number)
+    In Chrome: DevTools > Application > Local Storage > localhost
 
-Disclaimer: we are suggesting Date.now() for now as a placeholder for unique number generation, but in the future you should not use this
+    Verify that your "savedTodoList" item exists
 
-☑ Inside handleAddTodo, remove the reset() method and replace it with logic to reset the todoTitle state to an empty String
+    Notice that the value, however, is not readable (see below)
 
-Run your application and view in browser:
- Enter a todo in "Add Todo" form, submit, and verify item is visible in todo list
- Enter another todo, submit, and verify that two items are visible in todo list
+ Open /src/App.js
+
+ ☑ Update your side-effect function to convert todoList to a string before saving in localStorage
+
+☑ Hint: JSON.stringify method
+
+ View your application in browser
+ Clear your Local Storage
+In Chrome: DevTools > Application > Storage > Click "Clear site data"
+ Repeat the same steps from above
+ Notice that the value is completely readable as a string (see below) <pic>
+
+ Now your list is saved in Local Storage, but when you refresh the page? It still disappears!
+
+This is because we wrote the list data to Local Storage but we aren't reading it when the application is rendered. Let's fix that:
+
+ Open /src/App.js
+
+ Update the default state for todoList to read your "savedTodoList" item from localStorage
+
+Hint: localStorage.getItem method
+
+ View your application in browser
+ Notice that there is an error, todoList is not an Array
+How could our list not be an Array? Right! We turned it into a string before saving in Local Storage. So now that we're ready to use the value, we need to turn it back into an Array.
+
+ Open /src/App.js
+
+ Update your default state to parse the value of the "savedTodoList" item using the JSON.parse method
+
+ View your application in browser
+ Notice that your previous todo item(s) are still visible after refreshing the page
