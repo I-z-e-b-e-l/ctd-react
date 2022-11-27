@@ -11,18 +11,15 @@ function AddToDoForm(props){
 
     const handleAddTodo = (event) => {
         event.preventDefault();
-        props.onAddTodo(todoTitle);
-        event.target.reset("");
-        // console.log(event.target.value)
-    };
+    
+        props.onAddTodo({
+            title: todoTitle,
+            id: Date.now(),
+        });
+        
+        setTodoTitle("");
 
-    // const handleAddTodo = (event) => {
-    //     event.preventDefault();
-    //     const todoTitle = event.target.title.value;
-    //     console.log(todoTitle);
-    //     props.onAddTodo(todoTitle);
-    //     event.target.reset();
-    // };
+    };
 
     return(
         <form onSubmit={handleAddTodo}>
@@ -40,4 +37,3 @@ function AddToDoForm(props){
 
 export default AddToDoForm
 
-// ☑ 
