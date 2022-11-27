@@ -54,3 +54,4 @@ How could our list not be an Array? Right! We turned it into a string before sav
 
  View your application in browser
  Notice that your previous todo item(s) are still visible after refreshing the page
+ 
