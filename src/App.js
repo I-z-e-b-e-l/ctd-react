@@ -23,14 +23,13 @@ function App() {
   }
 
   return (
-    <div>
+    <React.Fragment>
       <h1>To Do List</h1>
       <AddToDoForm onAddTodo = {addTodo}/>
       {/* How do I get newTodoTitle to bubble up to here? */}
       {/* <p>You're adding:{}</p> */}
       <ToDoList todoListState={todoListState} />
-      
-    </div>
+    </React.Fragment>
   );
 };
 
