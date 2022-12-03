@@ -4,7 +4,8 @@ function InputWithLabel(props){
     return(
         <React.Fragment>
             <label htmlFor={props.htmlFor}>
-                Title: 
+                {props.children}
+                {/* {props.label} */}
             </label>
             <input 
                 id={props.id}

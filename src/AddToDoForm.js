@@ -30,9 +30,12 @@ function AddToDoForm(props){
                 type="text" 
                 name="title"
                 value={todoTitle}
-                onChange={handleTitleChange} 
-            />
-
+                onChange={handleTitleChange}
+                label="Title: " 
+            >
+                <p>Add an item: </p>
+            </InputWithLabel>
+            
             <button type='submit'>Add</button>
         </form>
     )

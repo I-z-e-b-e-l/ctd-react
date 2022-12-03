@@ -1,37 +1,9 @@
 
 ☑ ❓
-
-Create Reusable Input with Label Component
-
- ☑ Inside /src directory, create a new file called InputWithLabel.js
-  ☑  Open /src/InputWithLabel.js - Declare and export a new functional React component named InputWithLabel
-
-    ☑  Move label and input JSX from AddTodoForm.js to InputWithLabel.js (see below)
-
-    ☑  Open /src/AddTodoForm.js Cut (copy and remove) the label and input elements
-    ☑  Open /src/InputWithLabel.js: Inside the multi-line return, paste the elements you copied (hint: use a Fragment ☑  )
-
-    ☑  Add props as a parameter in the InputWithLabel function
-
-    Update todoTitle and handleTitleChange references to come from props
-    
-    Refactor AddTodoForm.js to use new InputWithLabel component and pass the necessary props
- Run your application and view in browser
- Verify that your "Add Todo Form" still appears correctly
-
-
-
-Great, now we have a reusable component! But what if we wanted to reuse this "Input with Label" in a different form? The "Label" is hard-coded as "Title" which isn't very reusable. Let's fix that:
-
- Open /src/InputWithLabel.js
- Replace the text inside the label element with a new props variable named label
- Open /src/AddTodoForm.js
- Pass a label prop to the InputWithLabel component with value "Title"
- View your application in browser
- Verify that your "Add Todo Form" still appears correctly
-To-Do Application with Reusable Component
+☑ Create reuseable label for InputWithLabel component
 
 Refactor Input with Label to use Component Composition
+
  Open /src/InputWithLabel.js
  Replace label prop with children so that any child node(s) are used as the label text
  Open /src/AddTodoForm.js
@@ -41,6 +13,8 @@ Refactor Input with Label to use Component Composition
  Pass the text Title inside the component tags
  View your application in browser
  Verify that your "Add Todo Form" still appears correctly
+
+
 Add Auto-Focus to Input
  Open /src/InputWithLabel.js
  Add autoFocus prop to input element
