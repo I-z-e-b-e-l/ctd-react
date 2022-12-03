@@ -11,7 +11,10 @@ function ToDoList(props) {
         <ul>
           {props.todoListState.map(function (item) {
             return (
-              <TodoListItem key={item.id} arrayitem={item}/>
+              <TodoListItem 
+                key={item.id} 
+                arrayitem={item}
+              />
  
             );
           })}
@@ -19,8 +22,6 @@ function ToDoList(props) {
         </div>
     );
   };
-
-
 
 
 export default ToDoList;
