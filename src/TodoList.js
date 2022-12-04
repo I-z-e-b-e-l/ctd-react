@@ -14,6 +14,7 @@ function ToDoList(props) {
               <TodoListItem 
                 key={item.id} 
                 arrayitem={item}
+                onRemoveTodo = {props.onRemoveTodo}
               />
  
             );

@@ -1,24 +1,19 @@
 import React from "react";
 
-function TodoListItem(props) {
-
-  const item=props.arrayitem;
+function TodoListItem({arrayitem, onRemoveTodo}) {
 
     return(
-          <React.Fragment>
-            <li key={item.objectID}>
-              {item.title}
-              <button 
-                type="button" 
-                // onClick={onRemoveTodo}
-              >Remove</button>
-            </li> 
-
-          
-
-          </React.Fragment>
-
+      <React.Fragment>
+        <li key={arrayitem.objectID}>
+          {arrayitem.title}
+          <button 
+            type="button" 
+            onClick={()=>onRemoveTodo(arrayitem)}
+          >Remove</button>
+        </li> 
+      </React.Fragment>
     )
 };
+
 
 export default TodoListItem;

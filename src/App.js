@@ -1,6 +1,7 @@
 import React from 'react';
 import ToDoList from './TodoList.js';
 import AddToDoForm from './AddToDoForm.js';
+// import TodoListItem from './TodoListItem.js';
 
 const useSemiPersistentState = () => {
 
@@ -22,9 +23,25 @@ function App() {
     setTodoListState([...todoListState, newTodo]);
   }
 
-  const removeTodo = (id) => {
-    
-  };
+
+//The logic here should be correct, so I'm assuming there's something elsewhere in the application that's hanging things up
+
+  // const removeTodo = id => {
+  //   const newTodoList = todoListState.filter(
+  //     todo => id !== todo.id
+  //   );
+  //   setTodoListState(newTodoList)
+  // }
+
+
+  // This works. I can't get the above to run taking in just id as a parameter. 
+  const removeTodo = item => {
+    const newTodoList = todoListState.filter(
+      todo => item.id !== todo.id
+    );
+    setTodoListState(newTodoList)
+  }
+
 
   return (
     <React.Fragment>
@@ -32,7 +49,7 @@ function App() {
       <AddToDoForm onAddTodo = {addTodo}/>
       {/* How do I get newTodoTitle to bubble up to here? */}
       {/* <p>You're adding:{}</p> */}
-      <ToDoList todoListState={todoListState} />
+      <ToDoList todoListState={todoListState} onRemoveTodo={removeTodo}/>
     </React.Fragment>
   );
 };
