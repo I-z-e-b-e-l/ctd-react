@@ -22,6 +22,10 @@ function App() {
     setTodoListState([...todoListState, newTodo]);
   }
 
+  const removeTodo = (id) => {
+    
+  };
+
   return (
     <React.Fragment>
       <h1>To Do List</h1>

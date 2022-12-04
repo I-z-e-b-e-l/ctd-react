@@ -1,26 +1,61 @@
 import React from 'react';
 
-function InputWithLabel(props){
+// function InputWithLabel(props){
+
+//     const inputRef = React.useRef();
+
+//     React.useEffect(()=>{
+//         if (isFocused) {
+//             inputRef.current.focus();
+//         }
+//     }, [isFocused]);
+
+//     return(
+//         <React.Fragment>
+//             <label htmlFor={htmlFor}>
+//                 {children}
+//             </label>
+//             <input 
+//                 id={id}
+//                 type={type} 
+//                 name={name}
+//                 value={value}
+//                 onChange={onChange}
+//                 // autoFocus
+//                 ref={inputRef}
+//             />
+//         </React.Fragment>
+//     )
+
+// }
+
+function InputWithLabel({
+    htmlFor,
+    id,
+    type,
+    name,
+    value,
+    onChange,
+    children,
+    }){
 
     const inputRef = React.useRef();
 
     React.useEffect(()=>{
-        if (props.isFocused) {
-            inputRef.current.focus();
-        }
-    }, [props.isFocused]);
+        inputRef.current.focus();
+    });
 
     return(
         <React.Fragment>
-            <label htmlFor={props.htmlFor}>
-                {props.children}
+            <label htmlFor={htmlFor}>
+                {children}
             </label>
             <input 
-                id={props.id}
-                type={props.type} 
-                name={props.name}
-                value={props.value}
-                onChange={props.onChange}
+                id={id}
+                type={type} 
+                name={name}
+                value={value}
+                onChange={onChange}
                 // autoFocus
                 ref={inputRef}
             />
@@ -28,26 +63,5 @@ function InputWithLabel(props){
     )
 
 }
-
-
-
-// function InputWithLabel(props){
-//     return(
-//         <React.Fragment>
-//             <label htmlFor={props.htmlFor}>
-//                 {props.children}
-//             </label>
-//             <input 
-//                 id={props.id}
-//                 type={props.type} 
-//                 name={props.name}
-//                 value={props.value}
-//                 onChange={props.onChange}
-//                 autoFocus
-//             />
-//         </React.Fragment>
-//     )
-
-// }
 
 export default InputWithLabel;

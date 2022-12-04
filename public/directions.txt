@@ -2,17 +2,28 @@
 ☑ ❓
 ☑ Add Auto-Focus to Input
 
-Update so the input element is focused on every render with an imperative ref 
+update code so the input element is focused on every render:
+
+☑ Open /src/InputWithLabel.js: Use the useRef React hook to create an imperative ref named inputRef
+ Define a useEffect React hook with an empty dependency list
+ Inside the side-effect handler function, call the focus() method on the current inputRef
+☑ Remove the autoFocus prop on the input element
+☑ Add a ref prop with value inputRef on the input element
+ View your application in browser
+ Verify that input element is focused on page load
+ Enter a new todo in "Add Todo" form and submit
+ Verify that input element is re-focused automatically
 
 
 Add "Remove" Button to List Items
+
  Open /src/TodoListItem.js
- Add a button element, type "button", inside the list item with text "Remove"
+ ☑ Add a button element, type "button", inside the list item with text "Remove"
 
  Open /src/App.js
- Define a new handler function named removeTodo with parameter id
- Inside this function, remove the item with the given id from todoList
-hint: filter or splice methods
+ ☑ Define a new handler function named removeTodo with parameter id
+
+ Inside this function, remove the item with the given id from todoList hint: filter or splice methods
  Call the setTodoList state setter and pass the new or modified Array
  Pass removeTodo as a callback handler prop named onRemoveTodo to the TodoList component
 
