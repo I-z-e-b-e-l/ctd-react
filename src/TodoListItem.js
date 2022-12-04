@@ -5,9 +5,19 @@ function TodoListItem(props) {
   const item=props.arrayitem;
 
     return(
-          <li key={item.objectID}>
-            {item.title}
-          </li> 
+          <React.Fragment>
+            <li key={item.objectID}>
+              {item.title}
+              <button 
+                type="button" 
+                // onClick={onRemoveTodo}
+              >Remove</button>
+            </li> 
+
+          
+
+          </React.Fragment>
+
     )
 };
 

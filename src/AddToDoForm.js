@@ -31,7 +31,7 @@ function AddToDoForm(props){
                 name="title"
                 value={todoTitle}
                 onChange={handleTitleChange}
-                label="Title: " 
+                isFocused
             >
                 <p>Add an item: </p>
             </InputWithLabel>
