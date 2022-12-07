@@ -26,21 +26,22 @@ function App() {
 
 //The logic here should be correct, so I'm assuming there's something elsewhere in the application that's hanging things up
 
-  // const removeTodo = id => {
-  //   const newTodoList = todoListState.filter(
-  //     todo => id !== todo.id
-  //   );
-  //   setTodoListState(newTodoList)
-  // }
-
-
-  // This works. I can't get the above to run taking in just id as a parameter. 
-  const removeTodo = item => {
+  const removeTodo = id => {
+    console.log(id)
     const newTodoList = todoListState.filter(
-      todo => item.id !== todo.id
+      todo => id !== todo.id
     );
     setTodoListState(newTodoList)
   }
+
+
+  // This works. I can't get the above to run taking in just id as a parameter. 
+  // const removeTodo = item => {
+  //   const newTodoList = todoListState.filter(
+  //     todo => item.id !== todo.id
+  //   );
+  //   setTodoListState(newTodoList)
+  // }
 
 
   return (

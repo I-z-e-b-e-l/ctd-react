@@ -4,11 +4,11 @@ function TodoListItem({arrayitem, onRemoveTodo}) {
 
     return(
       <React.Fragment>
-        <li key={arrayitem.objectID}>
+        <li key={arrayitem.id}>
           {arrayitem.title}
           <button 
             type="button" 
-            onClick={()=>onRemoveTodo(arrayitem)}
+            onClick={()=>onRemoveTodo(arrayitem.id)}
           >Remove</button>
         </li> 
       </React.Fragment>
