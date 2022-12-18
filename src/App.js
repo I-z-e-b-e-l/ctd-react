@@ -18,11 +18,30 @@ function App() {
 
   // const [todoListState, setTodoListState] = useSemiPersistentState()
 
-  const [todoListState, setTodoListState] = React.useState(JSON.parse(localStorage.getItem('savedTodoList')) || []);
+  // const [todoListState, setTodoListState] = React.useState(JSON.parse(localStorage.getItem('savedTodoList')) || []);
+
+  const [todoListState, setTodoListState] = React.useState([]);
+
+  const [isLoading, setIsLoading] = React.useState(true);
+
+  React.useEffect(()=>{
+    new Promise ((resolve, reject) => {
+      setTimeout(()=> 
+      resolve({
+        data:{todoList: JSON.parse(localStorage.getItem('savedTodoList')) || []}
+      }), 2000)
+    }).then((result)=>{
+      setTodoListState([...result.data.todoList]);    
+      setIsLoading(false);
+  })
+  },[]);
+
 
   React.useEffect(()=> {
-    localStorage.setItem('savedTodoList', JSON.stringify(todoListState))
-  },[todoListState]);
+    if (!isLoading) {
+          localStorage.setItem('savedTodoList', JSON.stringify(todoListState))
+    }
+  },[todoListState, isLoading]);
 
 
 
@@ -47,7 +66,11 @@ function App() {
       <AddToDoForm onAddTodo = {addTodo}/>
       {/* How do I get newTodoTitle to bubble up to here? */}
       {/* <p>You're adding:{}</p> */}
-      <ToDoList todoListState={todoListState} onRemoveTodo={removeTodo}/>
+
+      {isLoading? (<p>Loading...</p>) : (<ToDoList todoListState={todoListState} onRemoveTodo={removeTodo}/>)}
+      
+
+      
     </React.Fragment>
   );
 };
