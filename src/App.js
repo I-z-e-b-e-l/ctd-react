@@ -1,24 +1,8 @@
 import React from 'react';
 import ToDoList from './TodoList.js';
 import AddToDoForm from './AddToDoForm.js';
-// import TodoListItem from './TodoListItem.js';
-
-// const useSemiPersistentState = () => {
-
-//   const [todoListState, setTodoListState] = React.useState(JSON.parse(localStorage.getItem('savedTodoList')) || []);
-
-//   React.useEffect(()=> {
-//     localStorage.setItem('savedTodoList', JSON.stringify(todoListState))
-//   },[todoListState]);
-
-//   return [todoListState, setTodoListState];
-// }
 
 function App() {
-
-  // const [todoListState, setTodoListState] = useSemiPersistentState()
-
-  // const [todoListState, setTodoListState] = React.useState(JSON.parse(localStorage.getItem('savedTodoList')) || []);
 
   const [todoListState, setTodoListState] = React.useState([]);
 
@@ -43,13 +27,9 @@ function App() {
     }
   },[todoListState, isLoading]);
 
-
-
-  //overwrite the todoListState array with a new one that includes newTodo
   const addTodo = (newTodo) => {
     setTodoListState([...todoListState, newTodo]);
   }
-
 
   const removeTodo = id => {
     console.log(id)
@@ -58,7 +38,6 @@ function App() {
     );
     setTodoListState(newTodoList)
   }
-
 
   return (
     <React.Fragment>
