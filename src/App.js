@@ -7,8 +7,6 @@ const url = `https://api.airtable.com/v0/appk73ITFCrRp7XlX/Default?api_key=${pro
 
 function App() {
 
-  console.log(process.env.REACT_APP_MY_ENVIRONMENT_VARIABLE);
-
   const [todoListState, setTodoListState] = React.useState([]);
 
   const [isLoading, setIsLoading] = React.useState(true);
@@ -20,11 +18,10 @@ function App() {
 
     .then((response) => response.json())
     .then((result) => {
-      console.log("runs result")
       setTodoListState(result.records);
       setIsLoading(false);
     })
-    .catch(()=>{console.log('Error')})
+    .catch((error)=>{console.log(error.message)})
 }, [])
 
   React.useEffect(()=> {
