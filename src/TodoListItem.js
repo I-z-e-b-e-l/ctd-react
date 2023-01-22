@@ -4,8 +4,9 @@ function TodoListItem({arrayitem, onRemoveTodo}) {
 
     return(
       <React.Fragment>
-        <li key={arrayitem.id}>
-          {arrayitem.title}
+        {/* <li key={arrayitem.id}> - is a key still needed? */}        
+        <li>
+        {arrayitem.fields.Title}
           <button 
             type="button" 
             onClick={()=>onRemoveTodo(arrayitem.id)}

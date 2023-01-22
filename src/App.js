@@ -2,24 +2,30 @@ import React from 'react';
 import ToDoList from './TodoList.js';
 import AddToDoForm from './AddToDoForm.js';
 
+
+const url = `https://api.airtable.com/v0/appk73ITFCrRp7XlX/Default?api_key=${process.env.REACT_APP_AIRTABLE_API_KEY}`;
+
 function App() {
+
+  console.log(process.env.REACT_APP_MY_ENVIRONMENT_VARIABLE);
 
   const [todoListState, setTodoListState] = React.useState([]);
 
   const [isLoading, setIsLoading] = React.useState(true);
 
-  React.useEffect(()=>{
-    new Promise ((resolve, reject) => {
-      setTimeout(()=> 
-      resolve({
-        data:{todoList: JSON.parse(localStorage.getItem('savedTodoList')) || []}
-      }), 2000)
-    }).then((result)=>{
-      setTodoListState([...result.data.todoList]);    
-      setIsLoading(false);
+ React.useEffect(() => {
+  fetch(`${url}`, {
+    headers: {'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`}
   })
-  },[]);
 
+    .then((response) => response.json())
+    .then((result) => {
+      console.log("runs result")
+      setTodoListState(result.records);
+      setIsLoading(false);
+    })
+    .catch(()=>{console.log('Error')})
+}, [])
 
   React.useEffect(()=> {
     if (!isLoading) {
