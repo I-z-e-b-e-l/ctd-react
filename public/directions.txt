@@ -1,79 +1,18 @@
 
 ☑ ❓
+
+☑ Install react router with "yarn add react-router-dom"
+
+Setup Router
  Open src/App.js
-
- Inside the first useEffect hook, replace the placeholder Promise with the following...
-
- Using the Fetch API, create a "GET" request and pass the necessary arguments:
-
-   ☑ url: the url of your request (in this case, https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default note that we need to use process.env... to get env variables and remember that you need to use back-ticks and a dollar sign to do string formatting (see Using Fetch - Web APIs | MDN (Supplying request options section) for a reminder if needed)
-
-   ❓ options: the object of additional request options
-
-
-React.useEffect(() => {
-dispatchStories({ type: 'STORIES_FETCH_INIT' });
-fetch(`${API_ENDPOINT}react`) // B
-.then((response) => response.json()) // C
-.then((result) => {
-dispatchStories({
-type: 'STORIES_FETCH_SUCCESS',
-payload: result.hits, // D
-});
-})
-.catch(() =>
-dispatchStories({ type: 'STORIES_FETCH_FAILURE' })
-);
-}, [])
-
-
-  const loadTodos = async() => {
+ ☑ Import BrowserRouter, Routes, and Route from react-router-dom
  
-    try {
+ ☑ Wrap existing JSX within new BrowserRouter component
  
-    const response = await
-       fetch(`https://api.airtable.com/v0/{API key}`, {
-           headers: {
-             'Authorization': `Bearer ${API_KEY}`
-          }
-       });
+  ☑Inside BrowserRouter, wrap existing JSX within new Routes component
 
-       if (!response.ok) {
-         const message = `Error: ${response.status}`;
-         throw new Error(message); 
-       }
+ Inside Routes, wrap existing JSX within new Route component with prop path equal to the root path ("/") and prop exact
 
-       const todosFromAPI = await response.json();
+    note: the path prop will match any url that starts with the given string, so "/" will match all other urls ("/one", "/one/two", and so on) unless we specify that it must be an exact match using the exact prop
 
-       const todos = todosFromAPI.records.map((todo) => {
-
-          const newTodo =  {
-              id: todo.id,
-              name: todo.fields.name
-          }
-
-          return newTodo
-            
-      });
-    
-         setTodos(todos);
- 
-      } catch (error) {
-          console.log(error.message)
-      }
-
-
-
-
-☑ In the fetch options object, add the property headers as an object with the following property:
-
-    Authorization: the token to authorize the request (in this case "Bearer {API_KEY}" where {API_KEY} is replaced with the corresponding environment variable)
-
-
-☑  Chain a then method to your fetch call and pass it a function that returns the response JSON data
-
- Update the setToDoList call to reference the new result format (hint: result.records)
-
- Open src/TodoListItem.js
-
- Update the todo item title to reference the new object format (hint: todo.fields.Title)
+ Run your application and view in browser and verify that your Todo List still appears correctly

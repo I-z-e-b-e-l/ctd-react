@@ -1,6 +1,11 @@
 import React from 'react';
 import ToDoList from './TodoList.js';
 import AddToDoForm from './AddToDoForm.js';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 
 
 const url = `https://api.airtable.com/v0/appk73ITFCrRp7XlX/Default?api_key=${process.env.REACT_APP_AIRTABLE_API_KEY}`;
@@ -43,17 +48,21 @@ function App() {
   }
 
   return (
-    <React.Fragment>
-      <h1>To Do List</h1>
-      <AddToDoForm onAddTodo = {addTodo}/>
-      {/* How do I get newTodoTitle to bubble up to here? */}
-      {/* <p>You're adding:{}</p> */}
+    <BrowserRouter>
+      <Routes>
+        <Route 
+          path="/" 
+          exact
+        >
+          <React.Fragment>
+            <h1>To Do List</h1>
+            <AddToDoForm onAddTodo = {addTodo}/>
 
-      {isLoading? (<p>Loading...</p>) : (<ToDoList todoListState={todoListState} onRemoveTodo={removeTodo}/>)}
-      
-
-      
-    </React.Fragment>
+            {isLoading? (<p>Loading...</p>) : (<ToDoList todoListState={todoListState} onRemoveTodo={removeTodo}/>)}
+          </React.Fragment>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
