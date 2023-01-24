@@ -1,25 +1,30 @@
 
 ☑ ❓
 
-Add "Remove" Button to List Items
+☑ Install react router with "yarn add react-router-dom"
 
- Open /src/TodoListItem.js
- ☑ Add a button element, type "button", inside the list item with text "Remove"
+Setup Router
+ Open src/App.js
+ ☑ Import BrowserRouter, Routes, and Route from react-router-dom
+ 
+ ☑ Wrap existing JSX within new BrowserRouter component
+ 
+  ☑Inside BrowserRouter, wrap existing JSX within new Routes component
 
- Open /src/App.js
- ☑ Define a new handler function named removeTodo with parameter id
+ Inside Routes, wrap existing JSX within new Route component with prop path equal to the root path ("/") and prop exact
 
- ❓Inside this function, remove the item with the given id from todoList hint: filter or splice methods
- ☑ Call the setTodoList state setter and pass the new or modified Array
- ☑ Pass removeTodo as a callback handler prop named onRemoveTodo to the TodoList component
+    note: the path prop will match any url that starts with the given string, so "/" will match all other urls ("/one", "/one/two", and so on) unless we specify that it must be an exact match using the exact prop
 
- Open /src/TodoList.js
- ☑ Pass onRemoveTodo prop as a callback handler prop named onRemoveTodo to the TodoListItem component
+ Run your application and view in browser and verify that your Todo List still appears correctly
 
- Open /src/TodoListItem.js
- Add an onClick prop to the button element and pass a function that calls onRemoveTodo from props with the current item id as an argument
- View your application in browser
- Click the "Remove" button next to any list item
- Verify that the corresponding item is removed from the list
- Refresh the page and verify that the item is still removed
-To-Do Application with Remove Buttons
+
+ Open src/App.js
+
+ Below the Route component, create a new Route with path "/new"
+ 
+ Inside the Route component, create a level-one heading with text "New Todo List"
+ 
+ Run your application and view in browser
+    Verify that your Todo List still appears correctly
+    Navigate to http://localhost:3000/new
+    Verify that your New Todo List heading appears

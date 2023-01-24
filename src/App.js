@@ -1,56 +1,80 @@
 import React from 'react';
 import ToDoList from './TodoList.js';
 import AddToDoForm from './AddToDoForm.js';
-// import TodoListItem from './TodoListItem.js';
+import {
+  BrowserRouter,
+  Routes,
+  Route
+} from "react-router-dom";
 
-const useSemiPersistentState = () => {
 
-  const [todoListState, setTodoListState] = React.useState(JSON.parse(localStorage.getItem('savedTodoList')) || []);
-
-  React.useEffect(()=> {
-    localStorage.setItem('savedTodoList', JSON.stringify(todoListState))
-  },[todoListState]);
-
-  return [todoListState, setTodoListState];
-}
+const url = `https://api.airtable.com/v0/appk73ITFCrRp7XlX/Default?api_key=${process.env.REACT_APP_AIRTABLE_API_KEY}`;
 
 function App() {
 
-  const [todoListState, setTodoListState] = useSemiPersistentState()
+  const [todoListState, setTodoListState] = React.useState([]);
 
-  //overwrite the todoListState array with a new one that includes newTodo
+  const [isLoading, setIsLoading] = React.useState(true);
+
+ React.useEffect(() => {
+  fetch(`${url}`, {
+    headers: {'Authorization': `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`}
+  })
+
+    .then((response) => response.json())
+    .then((result) => {
+      setTodoListState(result.records);
+      setIsLoading(false);
+    })
+    .catch((error)=>{console.log(error.message)})
+}, [])
+
+  React.useEffect(()=> {
+    if (!isLoading) {
+          localStorage.setItem('savedTodoList', JSON.stringify(todoListState))
+    }
+  },[todoListState, isLoading]);
+
   const addTodo = (newTodo) => {
     setTodoListState([...todoListState, newTodo]);
   }
 
-
-//The logic here should be correct, so I'm assuming there's something elsewhere in the application that's hanging things up
-
-  // const removeTodo = id => {
-  //   const newTodoList = todoListState.filter(
-  //     todo => id !== todo.id
-  //   );
-  //   setTodoListState(newTodoList)
-  // }
-
-
-  // This works. I can't get the above to run taking in just id as a parameter. 
-  const removeTodo = item => {
+  const removeTodo = id => {
+    console.log(id)
     const newTodoList = todoListState.filter(
-      todo => item.id !== todo.id
+      todo => id !== todo.id
     );
     setTodoListState(newTodoList)
   }
 
-
   return (
-    <React.Fragment>
-      <h1>To Do List</h1>
-      <AddToDoForm onAddTodo = {addTodo}/>
-      {/* How do I get newTodoTitle to bubble up to here? */}
-      {/* <p>You're adding:{}</p> */}
-      <ToDoList todoListState={todoListState} onRemoveTodo={removeTodo}/>
-    </React.Fragment>
+    <BrowserRouter>
+      <Routes>
+        <Route 
+          exact
+          path="/" 
+          element = {
+            <React.Fragment>
+            <h1>To Do List</h1>
+            <AddToDoForm onAddTodo = {addTodo}/>
+
+            {isLoading? (<p>Loading...</p>) : (<ToDoList todoListState={todoListState} onRemoveTodo={removeTodo}/>)}
+            
+          </React.Fragment>
+          }
+        >
+        </Route>
+
+        <Route
+          path="/new"
+          element ={
+            <h2>New Todo List</h2>
+          }>
+
+        </Route>
+
+      </Routes>
+    </BrowserRouter>
   );
 };
 
