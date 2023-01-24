@@ -16,3 +16,15 @@ Setup Router
     note: the path prop will match any url that starts with the given string, so "/" will match all other urls ("/one", "/one/two", and so on) unless we specify that it must be an exact match using the exact prop
 
  Run your application and view in browser and verify that your Todo List still appears correctly
+
+
+ Open src/App.js
+
+ Below the Route component, create a new Route with path "/new"
+ 
+ Inside the Route component, create a level-one heading with text "New Todo List"
+ 
+ Run your application and view in browser
+    Verify that your Todo List still appears correctly
+    Navigate to http://localhost:3000/new
+    Verify that your New Todo List heading appears

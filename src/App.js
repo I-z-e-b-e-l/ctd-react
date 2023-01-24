@@ -51,16 +51,28 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route 
-          path="/" 
           exact
-        >
-          <React.Fragment>
+          path="/" 
+          element = {
+            <React.Fragment>
             <h1>To Do List</h1>
             <AddToDoForm onAddTodo = {addTodo}/>
 
             {isLoading? (<p>Loading...</p>) : (<ToDoList todoListState={todoListState} onRemoveTodo={removeTodo}/>)}
+            
           </React.Fragment>
+          }
+        >
         </Route>
+
+        <Route
+          path="/new"
+          element ={
+            <h2>New Todo List</h2>
+          }>
+
+        </Route>
+
       </Routes>
     </BrowserRouter>
   );
